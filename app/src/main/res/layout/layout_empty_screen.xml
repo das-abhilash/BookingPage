@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="model"
+            type="in.zollet.abhilashdas.bookingpage.viewmodel.BaseViewModel" />
+        <variable
+            name="errorModel"
+            type="in.zollet.abhilashdas.bookingpage.model.ErrorModel" />
+
+        <import type="android.view.View"/>
+    </data>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dimen_16"
+        android:visibility="@{errorModel.visibility ? View.VISIBLE:View.GONE}"
+        >
+
+        <ImageView
+            android:layout_marginTop="@dimen/dimen_16"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+            tools:src="@drawable/ic_no_internet"
+            android:src="@{errorModel.errorDrawable}"
+            />
+        <TextView
+            android:layout_marginTop="@dimen/dimen_16"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="@{errorModel.errorTitle}"
+            style="@style/TextAppearance.AppCompat.Body2"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_24"
+            android:layout_gravity="center"
+            android:elevation="@dimen/dimen_16"
+            android:text='@{errorModel.buttonText}'
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:onClick="@{()->errorModel.errorActionListner.onErrorActionClicked()}"
+            android:visibility="@{errorModel.buttonVisibility ? View.VISIBLE : View.GONE}"
+            android:background="@color/colorPrimary"/>
+
+    </LinearLayout>
+
+</layout>

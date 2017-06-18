@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <!--<variable
+            name="model"
+            type="in.zollet.abhilashdas.spotspoon.viewmodel.MainViewModel" />-->
+
+        <variable
+            name="handler"
+            type="in.zollet.abhilashdas.bookingpage.viewmodel.implementation.BookingViewModel"/>
+
+        <variable
+            name="viewPagetItem"
+            type="java.lang.String" />
+
+
+    </data>
+<LinearLayout
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/dimen_48"
+        app:listItem = "@{handler.getSlotList(viewPagetItem)}"
+        app:viewModel = "@{handler}"
+        android:scrollbarStyle="outsideOverlay"
+        tools:listitem="@layout/adapter_quater_time"
+        />
+
+
+</LinearLayout>
+    </layout>

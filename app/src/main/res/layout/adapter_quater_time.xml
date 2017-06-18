@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="position"
+            type="java.lang.Integer"/>
+
+        <variable
+            name="adapter"
+            type="in.zollet.abhilashdas.bookingpage.view.adapter.BaseRecyclerAdapter"/>
+
+        <variable
+            name="item"
+            type="in.zollet.abhilashdas.bookingpage.model.QuaterModel"/>
+
+        <variable
+            name="model"
+            type="in.zollet.abhilashdas.bookingpage.viewmodel.implementation.BookingViewModel"/>
+
+        <variable
+            name="isExpanded"
+            type="java.lang.Boolean"/>
+
+        <import type="in.zollet.abhilashdas.bookingpage.utility.Util"/>
+
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/gery"
+            >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8"
+                android:layout_marginBottom="@dimen/dimen_8"
+                android:layout_marginLeft="@dimen/dimen_16"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:layout_marginRight="@dimen/dimen_16"
+                android:layout_marginEnd="@dimen/dimen_16">
+
+
+                <in.zollet.abhilashdas.bookingpage.customviews.CircleImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:civ_border_color="@color/colorPrimary"
+                app:civ_fill_color="@color/colorPrimary"
+                app:civ_border_width="@dimen/dimen_8"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_morningsnack" />
+
+            </RelativeLayout>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@{Util.toTitleCase(item.quater)}"
+                tools:text="Morning"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                style="@style/Base.TextAppearance.AppCompat.Headline"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@{item.slotsAvaialble}"
+                tools:text="8 Solts available"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textColor="@color/colorPrimary"
+                style="@style/Base.TextAppearance.AppCompat.Subhead"
+                />
+
+            <ImageView
+                android:id="@+id/ivReveal"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:rotationX="@{isExpanded? 180 : 0}"
+                android:src="@drawable/ic_red_reveallist"
+                />
+            <!--android:src="@{isExpanded? @drawable/ic_inverted_reveallist : @drawable/ic_red_reveallist }"
+
+
+                -->
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+    <!-- android:text="@{item}"-->
+
+</layout>

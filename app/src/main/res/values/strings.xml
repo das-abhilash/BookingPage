@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BookingPage</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="choose_a_date_and_time">Choose a Date and Time</string>
+    <string name="no_internet_text">It seems like your not connected to internet. Connect to internet and try again</string>
+    <string name="no_internet_Button_text">RETRY</string>
+</resources>

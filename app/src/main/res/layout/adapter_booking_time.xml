@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="position"
+            type="java.lang.Integer"/>
+
+        <variable
+            name="adapter"
+            type="in.zollet.abhilashdas.bookingpage.view.adapter.BaseRecyclerAdapter"/>
+
+        <variable
+            name="item"
+            type="in.zollet.abhilashdas.bookingpage.model.SlotDetail"/>
+
+        <variable
+            name="model"
+            type="in.zollet.abhilashdas.bookingpage.viewmodel.implementation.BookingViewModel"/>
+
+
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="10.00 pm - 11.00 pm"
+            android:text="@{item.timeSlot}"
+            android:padding="@dimen/dimen_16"
+            android:enabled="@{item.isSlotEnabled()}"
+            style="@style/Base.TextAppearance.AppCompat.Subhead"
+            android:background="@{item.isSlotEnabled() ? @color/white : @color/deactivatedGrey}"/>
+
+    </android.support.v7.widget.CardView>
+<!-- android:text="@{item}"-->
+
+    </layout>

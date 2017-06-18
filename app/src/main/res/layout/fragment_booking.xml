@@ -1,0 +1,100 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="in.zollet.abhilashdas.bookingpage.viewmodel.implementation.BookingViewModel" />
+
+        <variable
+            name="month"
+            type="java.lang.String" />
+
+        <variable
+            name="errorModel"
+            type="in.zollet.abhilashdas.bookingpage.model.ErrorModel" />
+
+        <import type="android.view.View"/>
+
+    </data>
+
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/choose_a_date_and_time"
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
+                </android.support.v7.widget.Toolbar>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{month}"
+                android:padding="@dimen/dimen_16"
+                tools:text="February"
+                style="@style/Base.TextAppearance.AppCompat.Title"
+                android:textColor="#000000"
+                android:gravity="center_horizontal"
+                android:background="@color/white"/>
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:tabIndicatorColor="@color/colorPrimary"
+                app:tabSelectedTextColor="@color/colorPrimary"
+                app:tabMinWidth="100dp"
+                app:tabTextColor="#000000"
+                app:tabMode="scrollable"
+                app:tabGravity="fill"
+                android:visibility="@{!errorModel.visibility ? View.VISIBLE:View.GONE}"
+                />
+        </android.support.design.widget.AppBarLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager"
+                android:visibility="@{ !errorModel.visibility ? View.VISIBLE:View.GONE}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                app:layoutProvider="@{model.viewpagerLayoutProvider}"
+                app:viewPagerConfig="@{model.viewPagerConfiguration}"
+                app:tabProperty = "@{tabLayout}"
+                android:background="@color/app_window_background_grey"
+                />
+            <include layout="@layout/layout_empty_screen"
+                app:model="@{model}"
+                app:errorModel="@{errorModel}"
+                />
+
+        </FrameLayout>
+
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</layout>
