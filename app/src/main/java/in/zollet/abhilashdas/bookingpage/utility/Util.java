@@ -3,6 +3,8 @@ package in.zollet.abhilashdas.bookingpage.utility;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.annotation.StringDef;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
@@ -18,6 +20,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
 
+import in.zollet.abhilashdas.bookingpage.BookingApplication;
 import in.zollet.abhilashdas.bookingpage.R;
 import in.zollet.abhilashdas.bookingpage.customviews.CustomProgressBar;
 
@@ -110,6 +113,14 @@ public class Util {
         sbView.setBackgroundColor(Color.RED);
         textView.setTextColor(Color.WHITE);
         snackbar.show();
+    }
+
+    public static boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) BookingApplication.getInstance()
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        return activeNetwork != null && activeNetwork.isConnected();
     }
 
 }

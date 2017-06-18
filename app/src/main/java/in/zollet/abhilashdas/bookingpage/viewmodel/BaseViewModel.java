@@ -23,9 +23,9 @@ import static in.zollet.abhilashdas.bookingpage.viewmodel.contract.RequestStates
 public abstract class BaseViewModel implements LifeCycle.ViewModel {
 
     private Map<String, NetworkState> networkStateMap = new HashMap<>();
-    public CompositeSubscription compositeSubscription=new CompositeSubscription();
+    protected CompositeSubscription compositeSubscription=new CompositeSubscription();
 
-    public NetworkState getNetworkState(String tag) {
+    protected NetworkState getNetworkState(String tag) {
 
         NetworkState networkState = networkStateMap.get(tag);
         if (networkState != null) {
@@ -54,8 +54,6 @@ public abstract class BaseViewModel implements LifeCycle.ViewModel {
         public MaybeNetworkObserver(String tag) {
             this.tag = tag;
         }
-
-
 
         protected void setErrorRequestState(Throwable e) {
             NetworkState networkState=getNetworkState(tag);
@@ -87,7 +85,6 @@ public abstract class BaseViewModel implements LifeCycle.ViewModel {
             setSuccessRequestState();
 
         }
-
 
 
         @CallSuper

@@ -108,26 +108,6 @@ public class BookingViewModel extends BaseViewModel implements BookingViewModelC
         }
     }
 
-    public void onCardClick(RecylerViewHolder holder, ImageView ivReveal){
-        /*final int expandState = holder.getExpandStateFlags();
-
-        if ((expandState & ExpandableItemConstants.STATE_FLAG_IS_UPDATED) != 0) {
-            int bgResId;
-            boolean isExpanded;
-            boolean animateIndicator = ((expandState & ExpandableItemConstants.STATE_FLAG_HAS_EXPANDED_STATE_CHANGED) != 0);
-
-            if ((expandState & ExpandableItemConstants.STATE_FLAG_IS_EXPANDED) != 0) {
-                isExpanded = true;
-            } else {
-                isExpanded = false;
-            }
-
-            holder.setExpandStateFlags();
-
-//            holder.setExpandedState(isExpanded, animateIndicator);
-        }*/
-    }
-
 
     @Override
     public void onViewStopped() {
@@ -146,9 +126,9 @@ public class BookingViewModel extends BaseViewModel implements BookingViewModelC
 
 
 
-    public class BookingObserver extends MaybeNetworkObserver<ServerResponse> {
+    private class BookingObserver extends MaybeNetworkObserver<ServerResponse> {
 
-        public BookingObserver(String tag) {
+        BookingObserver(String tag) {
             super(tag);
         }
 
@@ -156,19 +136,6 @@ public class BookingViewModel extends BaseViewModel implements BookingViewModelC
         public void onNext(ServerResponse response) {
             super.onNext(response);
             onBookingDataCompleted(response);
-
-
-           /* for (int i = 0; i < response.getSlots().size(); i++) {
-
-                collectionViewPagerList.add(new ViewPagerMap(R.layout.item_viewpager,"",response.getSlots(). ));
-                collectionViewPagerList.add(new ViewPagerMap(R.layout.item_viewpager,"","Image" ));
-                collectionViewPagerList.add(new ViewPagerMap(R.layout.item_viewpager,"","MileStone" ));
-            }
-            collectionViewPagerList.add(new ViewPagerMap(R.layout.item_viewpager,"","Video" ));
-            collectionViewPagerList.add(new ViewPagerMap(R.layout.item_viewpager,"","Image" ));
-            collectionViewPagerList.add(new ViewPagerMap(R.layout.item_viewpager,"","MileStone" ));
-            List*/
-
         }
     }
 
