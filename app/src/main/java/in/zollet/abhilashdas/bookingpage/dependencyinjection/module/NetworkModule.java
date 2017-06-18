@@ -24,9 +24,6 @@ import rx.schedulers.Schedulers;
 @Module
 public class NetworkModule {
 
-
-
-
     @Provides
     OkHttpClient provideOkHttpClient() {
         OkHttpClient.Builder client = new OkHttpClient.Builder();
